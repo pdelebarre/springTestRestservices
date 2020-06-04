@@ -1,14 +1,25 @@
 package eu.delebarre.testspring.restservices.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
+import org.springframework.data.annotation.Id;
 
 import javax.persistence.Entity;
 import java.util.UUID;
 
-public @Data class User {
+@Entity(name = "users")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class User {
 
+    @javax.persistence.Id
+    @Id
+    @Type(type = "pg-uuid")
     private UUID id;
+
     private String name;
 
 /*    public UUID getId() {

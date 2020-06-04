@@ -1,13 +1,13 @@
 package eu.delebarre.testspring.restservices.dao;
 
 import eu.delebarre.testspring.restservices.model.User;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 @Component("mapOfFakeUsers")
-@Primary
 public class FakeUserMap implements UserDao{
     private static Map<UUID, User> userMap = new HashMap<>();
 

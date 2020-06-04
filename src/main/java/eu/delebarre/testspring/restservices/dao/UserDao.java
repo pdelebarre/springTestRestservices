@@ -4,7 +4,7 @@ import eu.delebarre.testspring.restservices.model.User;
 
 import java.util.UUID;
 
-public interface UserDao {
+public interface UserDao { //extends JpaRepository<User, UUID> {
       Object listAll();
 
       User getUserById(UUID id);

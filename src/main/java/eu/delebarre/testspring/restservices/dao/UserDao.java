@@ -12,4 +12,6 @@ public interface UserDao { //extends JpaRepository<User, UUID> {
       boolean deleteUserById(UUID id);
 
       boolean updateUser(User user);
+
+      boolean addUser(User user);
 }

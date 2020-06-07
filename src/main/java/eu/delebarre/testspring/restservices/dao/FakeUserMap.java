@@ -35,6 +35,11 @@ public class FakeUserMap implements UserDao{
     @Override
     public boolean updateUser(User user) {
         User oldUser = userMap.get(user.getId());
-        return userMap.replace(oldUser.getId(),oldUser,user);
+        return userMap.replace(oldUser.getId(), oldUser, user);
+    }
+
+    @Override
+    public boolean addUser(User user) {
+        return userMap.put(user.getId(), user).equals(user);
     }
 }

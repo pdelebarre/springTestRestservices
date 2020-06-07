@@ -12,7 +12,7 @@ import java.util.UUID;
 public class UserService {
     @Resource
     //@Autowired
-    @Qualifier("dbOfUsers")
+    @Qualifier("listOfFakeUsers")
     private UserDao userDao;
 
     //public UserService(@Qualifier("dbOfUsers") UserDao userDao) {
@@ -25,5 +25,13 @@ public class UserService {
 
     public User getUserById(UUID id) {
         return userDao.getUserById(id);
+    }
+
+    public boolean updateUser(User user) {
+        return userDao.updateUser(user);
+    }
+
+    public boolean addUser(User user) {
+        return userDao.addUser(user);
     }
 }

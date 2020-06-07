@@ -5,14 +5,13 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
 @Component("listOfFakeUsers")
 @Primary
 public class FakeUserList implements UserDao{
-    private static List<User> userList = new ArrayList<>();
+    private static final List<User> userList = new ArrayList<>();
 
     static {
         userList.add(new User("Philippe"));
@@ -25,9 +24,7 @@ public class FakeUserList implements UserDao{
 
     @Override
     public User getUserById(UUID id) {
-        User user;
-        for (User value : userList) {
-            user = value;
+        for (User user : userList) {
             if (user.getId().equals(id)) {
                 return user;
             }
@@ -37,11 +34,24 @@ public class FakeUserList implements UserDao{
 
     @Override
     public boolean deleteUserById(UUID id) {
-        return false;
+        return userList.remove(this.getUserById(id));
+
     }
 
     @Override
     public boolean updateUser(User user) {
-        return false;
+        User oldUser = getUserById(user.getId());
+        try {
+            userList.set(userList.indexOf(oldUser), user);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
+
+    @Override
+    public boolean addUser(User user) {
+        return userList.add(user);
     }
 }

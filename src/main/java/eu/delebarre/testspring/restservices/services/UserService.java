@@ -11,15 +11,10 @@ import java.util.UUID;
 @Service
 public class UserService {
     @Resource
-    //@Autowired
-    @Qualifier("listOfFakeUsers")
+    @Qualifier("dbOfUsers")
     private UserDao userDao;
 
-    //public UserService(@Qualifier("dbOfUsers") UserDao userDao) {
-    //    this.userDao = userDao;
-    //}
-
-    public Object getAllUsers() {
+    public Object findAll() {
         return userDao.listAll();
     }
 
@@ -33,5 +28,13 @@ public class UserService {
 
     public boolean addUser(User user) {
         return userDao.addUser(user);
+    }
+
+    public boolean deleteUser(User user) {
+        return userDao.deleteUserById(user.getId());
+    }
+
+    public void deleteUserById(UUID id) {
+        userDao.deleteUserById(id);
     }
 }

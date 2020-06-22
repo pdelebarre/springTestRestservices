@@ -2,45 +2,37 @@ package eu.delebarre.testspring.restservices.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Type;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import java.io.Serializable;
 import java.util.UUID;
 
 @Entity(name = "users")
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
-public class User {
+
+public class User implements Serializable {
 
     @javax.persistence.Id
     @Id
-    @Type(type = "pg-uuid")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
 
-    private String name;
+    private String firstName;
+    private String lastName;
 
-/*    public UUID getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }*/
-
-    public User(String name) {
+    public User(String firstName, String lastName) {
         this.id = UUID.randomUUID();
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
-/*
-    @Override
-    public String toString() {
-        return id + " : " + name;
-    }*/
+
+    public User() {
+        this.setId(UUID.randomUUID());
+    }
+
+
 }

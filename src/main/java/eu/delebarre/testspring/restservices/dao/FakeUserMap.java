@@ -12,10 +12,10 @@ public class FakeUserMap implements UserDao{
     private static Map<UUID, User> userMap = new HashMap<>();
 
     static {
-        User user = new User("Philippe");
-        userMap.put(user.getId(),user);
-        user=new User("Ana");
-        userMap.put(user.getId(),user);
+        User user = new User("Philippe", "Delebarre");
+        userMap.put(user.getId(), user);
+        user = new User("Ana", "Telles");
+        userMap.put(user.getId(), user);
     }
 
     public Object listAll() {

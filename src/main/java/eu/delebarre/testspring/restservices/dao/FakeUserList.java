@@ -14,8 +14,8 @@ public class FakeUserList implements UserDao{
     private static final List<User> userList = new ArrayList<>();
 
     static {
-        userList.add(new User("Philippe"));
-        userList.add(new User("Ana"));
+        userList.add(new User("Philippe", "Delebarre"));
+        userList.add(new User("Ana", "Telles"));
     }
 
     public List<User> listAll() {
